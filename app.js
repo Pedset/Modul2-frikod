@@ -4,21 +4,19 @@
 //(function() {})();
 //
 // global global variable
-let x = "GlobalGlobal";
-let xx = false;
+let globalVariable = "This is global";
+let cold = false;
 // self invoked function
 (function () {
   const y = () => {
-    document.querySelector("#id1").innerHTML = x;
-    console.log("stage1");
+    document.querySelector("#id1").innerHTML = globalVariable;
   };
 
-  const var1 = document.querySelector("#btn1");
-  var1.addEventListener("click", (e) => {
+  document.querySelector("#btn1").addEventListener("click", (e) => {
     y();
   });
 
-  const event = new CustomEvent("changeNameAndColor", {
+  const change_name_color = new CustomEvent("changeNameAndColor", {
     detail: { color: "blue", name: "Pedram" },
   });
 
@@ -31,15 +29,15 @@ let xx = false;
     document.querySelector("#id2").innerHTML = name;
   });
   document.getElementById("btn2").addEventListener("click", () => {
-    document.dispatchEvent(event);
+    document.dispatchEvent(change_name_color);
   });
   document.getElementById("btn3").addEventListener("click", () => {
-    xx = true;
+    cold = true;
   });
   document.getElementById("btn4").addEventListener("click", () => {
-    xx = false;
+    cold = false;
   });
   document.getElementById("btn5").addEventListener("click", () => {
-    document.querySelector("#id3").innerHTML = xx;
+    document.querySelector("#id3").innerHTML = cold;
   });
 })();
